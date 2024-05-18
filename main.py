@@ -2,6 +2,8 @@ import os
 
 from google.cloud import bigquery
 
+
+
 app = Flask(__name__)
 client = bigquery.Client()
 
@@ -15,6 +17,7 @@ def main(big_query_client=client):
         skip_leading_rows=1,
     )
     uri = "gs://midd-ml-ops/us-states.csv"
+    
     load_job = big_query_client.load_table_from_uri(
         uri, table_id, job_config=job_config
     )
